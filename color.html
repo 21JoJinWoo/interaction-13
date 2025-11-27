@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        * {
+            word-break: keep-all;
+        }
+
         body {
             background-color: #000;
             color: #eee;
@@ -439,10 +443,29 @@
             object-fit: contain;
             filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.1));
         }
+
+        .global-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+            pointer-events: none;
+            font-family: "Noto Sans KR", sans-serif;
+        }
     </style>
 </head>
 
 <body>
+
+    <div class="global-nav">
+        <span>[1] 시각장애인</span>
+        <span>[2] 청각장애인</span>
+        <span>[3] 지체장애인+색각이상자</span>
+    </div>
 
     <div id="content-wrapper">
 
@@ -617,6 +640,12 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
+
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === '1') window.location.href = 'index.html';
+                    if (e.key === '2') window.location.href = 'ear.html';
+                    if (e.key === '3') window.location.href = 'color.html';
+                });
 
                 const initialText = "사서에게 빌린 책을 갖고 책상에 앉았습니다.<br>편하게 책을 읽어 보세요.";
                 const secondText = "종이를 넘기며 책을 읽어 보세요.";

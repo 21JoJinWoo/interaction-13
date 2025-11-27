@@ -24,6 +24,10 @@
             font-style: normal;
         }
 
+        * {
+            word-break: keep-all;
+        }
+
         body {
             background-color: #000;
             color: #eee;
@@ -378,10 +382,29 @@
         #left-arrow-key {
             transform: rotate(180deg);
         }
+
+        .global-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+            pointer-events: none;
+            font-family: "Noto Sans KR", sans-serif;
+        }
     </style>
 </head>
 
 <body>
+
+    <div class="global-nav">
+        <span>[1] 시각장애인</span>
+        <span>[2] 청각장애인</span>
+        <span>[3] 지체장애인+색각이상자</span>
+    </div>
 
     <div id="content-wrapper">
         <div id="librarian-label">사서:</div>
@@ -509,6 +532,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === '1') window.location.href = 'index.html';
+                if (e.key === '2') window.location.href = 'ear.html';
+                if (e.key === '3') window.location.href = 'color.html';
+            });
 
             let isTyping = false;
             let currentPage = 1;
